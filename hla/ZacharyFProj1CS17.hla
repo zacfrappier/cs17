@@ -1,0 +1,33 @@
+// Zachary Frappier
+// Project 1: NumInColumns;
+// CS 17
+// March 15, 2023
+
+program NumInColumns;   // program name declaration
+
+#include("stdlib.hhf");  //header file for functions and macros
+
+var						// declare two variables of type int32 & int8
+	i32:	int32;  
+	ColCnt:	int8;
+	
+begin NumInColumns;  //procedure start
+
+	mov(1, i32);		// mov- macro that moves value into register or memory location
+	mov(0, ColCnt);		// 1 -> i32      0 -> ColCnt
+
+	while(i32 < 97) do  // while i32 > 0 is true, the following loop will execute
+
+		if(ColCnt = 8) then	 // if ColCnt = 8 is true do the following
+			stdout.newln();		// create new  line	
+			mov(0,ColCnt);		// mov 0 -> ColCnt
+		endif;				// ends the if
+
+		stdout.puti32Size(i32, 5, ' ');	//function - prints the integer with minimum width 5, and pads with space
+		add( 1, i32);		// increment i32
+		add( 1, ColCnt);	// increment ColCnt
+
+	endwhile;				//end while loop
+	stdout.newln();			//create space
+
+end NumInColumns;			// end program
