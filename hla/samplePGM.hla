@@ -1,0 +1,12 @@
+// Zachary Frappier
+// Prorect 1: hello world
+// CS 17
+// March 13, 2023
+
+program PGMMar11;
+#include ("stdlib.hhf");
+
+begin PGMMar11;
+    stdout.put ("This is a first line", nl);
+    stdout.put ("This is second", nl);
+end PGMMar11;
