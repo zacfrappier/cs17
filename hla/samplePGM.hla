@@ -8,5 +8,8 @@ program PGMMar11;
 
 begin PGMMar11;
     stdout.put ("This is a first line", nl);
+    stdout.newln();
     stdout.put ("This is second", nl);
+    stdout.newln();
+    stdout.put("this third lines",nl)
 end PGMMar11;

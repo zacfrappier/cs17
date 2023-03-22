@@ -1,0 +1,72 @@
+// Zachary Frappier
+// Project 2 -Details 
+// CS 17
+// March 21, 2023
+
+program counting;
+
+#include("stdlib.hhf");
+
+        //declare all variables to be used
+static 
+    count: int32 :=0;
+    total: int32 :=0;
+    max: int32 := $0000000; //initialize to smallest possible int value
+    min: int32 := $7FFFFFFF; // largest possible int val
+
+    begin counting;
+        stdout.put("Enter number, one per line. Enter '0' to end.\n");
+
+        while(true)
+            stdin.geti32(); // read the next int from user
+            mov(eax,[stdin + stdin.iPtr]);
+            cmp(eax,0);         // cmp(). - compare macro compare the input to '0' for termination 'repeat'
+            je done;   // je jump if equal
+
+            inc(count);     //increment the count of non-zero numbers entered
+            add(total,eax); //add the input to the running total
+
+            // update the max and min values if the current input is greater or less
+            // than the current min or max
+            cmp(eax,max);
+            jg set_max;    // jg jump if greater
+            cmp(eax,min);
+            jl set_min;     // jump if less if previous comparison indicates first operand is less, jump to specified address
+            jmp next_num;
+
+            set_max:
+                mov(max,eax);
+                jmp next_num;
+
+            set_min:
+                mov(min,eax);
+                jmp next_num;
+
+            next_num: //continue loop
+
+        end while;
+        
+        done:
+        //print results
+
+        stdout.put("total: ");
+        stdout.puti32(total,0,10);
+        stdout.put("\n");
+
+        stdout.put("max val: ");
+        stdout.puti32(max,0,10);
+        stdout.put("\n");
+
+        stdout.put("min val: ");
+        stdout.puti32(min,0,10);
+        stdout.put("\n");
+
+        stdout.put("number of values entered: ");
+        stdout.puti32(count,0,10);
+        stdout.put("\n");
+
+        exit(0);
+
+    end counting;
+
+
